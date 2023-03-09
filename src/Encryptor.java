@@ -119,13 +119,14 @@ public class Encryptor
         String message = "";
         for (int i = 0; i < iterations; i++){
             decryptFill(encryptedMessage.substring(0, numRows * numCols));
-            for (int col = 0; col < letterBlock[0].length; col++){
-                for (int row = 0; row < letterBlock.length; row++){
+            for (int row = 0; row < letterBlock.length; row++){
+                for (int col = 0; col < letterBlock[0].length; col++){
                     message += letterBlock[row][col];
                 }
             }
             encryptedMessage = encryptedMessage.substring(numRows * numCols);
         }
+        //for (int letter = encryptedMessage.length() - 1; )
         return message;
     }
 
@@ -136,6 +137,18 @@ public class Encryptor
                 letterBlock[row][col] = str.charAt(charNum) + "";
                 charNum++;
             }
+        }
+    }
+
+    public static void print2DArray(String[][] arr)
+    {
+        for (String[] row : arr)
+        {
+            for (String val : row)
+            {
+                System.out.print(val + " ");
+            }
+            System.out.println();
         }
     }
 }
