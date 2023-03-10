@@ -155,6 +155,7 @@ public class Encryptor
             else shiftedCharacter = values.charAt(i + shift) + "";
             shifted += shiftedCharacter;
         }
+        //
         return encryptMessage(shifted);
     }
 }
