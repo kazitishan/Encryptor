@@ -126,7 +126,9 @@ public class Encryptor
             }
             encryptedMessage = encryptedMessage.substring(numRows * numCols);
         }
-        //for (int letter = encryptedMessage.length() - 1; )
+        while (message.substring(message.length() - 1).equals("A")){
+            message = message.substring(0, message.length() - 1);
+        }
         return message;
     }
 
@@ -140,15 +142,19 @@ public class Encryptor
         }
     }
 
-    public static void print2DArray(String[][] arr)
-    {
-        for (String[] row : arr)
-        {
-            for (String val : row)
-            {
-                System.out.print(val + " ");
+    public String superEncryptMessage(String message){
+        // 64bit values:
+        String values = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+/";
+        String shifted = "";
+        int shift = 7;
+        for (int i = 0; i < message.length(); i++){
+            String shiftedCharacter = "";
+            if (i + shift >= values.length()){
+                shiftedCharacter = values.charAt((i + shift) - values.length()) + "";
             }
-            System.out.println();
+            else shiftedCharacter = values.charAt(i + shift) + "";
+            shifted += shiftedCharacter;
         }
+        return encryptMessage(shifted);
     }
 }
